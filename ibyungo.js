@@ -1,0 +1,1 @@
+exports.ibyungo = ["na", "nka"];
