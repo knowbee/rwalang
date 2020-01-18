@@ -3,6 +3,7 @@
 
 exports.ibihekane = [
   "bw",
+  "bg",
   "by",
   "byw",
   "mb",

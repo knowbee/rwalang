@@ -1,1 +1,21 @@
-exports.inyajwi = ["a", "e", "i", "o", "u"];
+exports.inyajwi = [
+  "b",
+  "c",
+  "d",
+  "f",
+  "g",
+  "h",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "p",
+  "r",
+  "s",
+  "t",
+  "v",
+  "w",
+  "y",
+  "z"
+];
