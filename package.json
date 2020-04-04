@@ -1,13 +1,25 @@
 {
-  "name": "is-kinya",
+  "name": "rwalang",
   "version": "1.0.0",
+  "description": "A fast language detection package for Kinyarwanda(Native language of Rwandans)",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "mocha index.test.js --exit"
+    "test": "mocha test/index.test.js --exit"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^7.1.1"
-  }
+  },
+  "keywords": [
+    "detect language",
+    "rwanda",
+    "ikinyarwanda",
+    "u rwanda"
+  ],
+  "author": "Igwaneza Bruce <knowbeeinc@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/knowbee/rwalang/issues"
+  },
+  "homepage": "https://github.com/knowbee/rwalang#readme"
 }

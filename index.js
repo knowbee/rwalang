@@ -73,5 +73,5 @@ const isKinyarwanda = (word) => {
   return true;
 };
 module.exports = {
-  isKinya: isKinyarwanda,
+  isKinyarwanda,
 };
