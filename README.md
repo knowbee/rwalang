@@ -33,7 +33,7 @@ const { isKinyarwanda } = require("rwalang");
 console.log(isKinyarwanda("Thank you!")); //false
 console.log(isKinyarwanda("Murakoze!")); //true
 console.log(isKinyarwanda("Iminsi n'imitindi")); //true
-console.log(isKinyarwanda("Yangurije amafaranga 500")); //true
+console.log(isKinyarwanda("Yangurije amafaranga magana atanu")); //true
 console.log(isKinyarwanda("mbega i nigga")); //false 😂
 ```
 
