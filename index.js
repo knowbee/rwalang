@@ -39,7 +39,7 @@ const tokenize = (word) => {
  * @return {Boolean} bool
  */
 const detector = (syllable) => {
-  ikinyarwanda.includes(syllable) ? true : false;
+  return ikinyarwanda.includes(syllable) ? true : false;
 };
 /**
  *
@@ -58,19 +58,18 @@ const isKinyarwanda = (word) => {
     if (
       c.trim().length > 1 &&
       !ibyungo.includes(c.trim()) &&
-      !ibihekane.includes(c.trim()) &&
-      isNaN(parseInt(c))
+      !ibihekane.includes(c.trim())
     ) {
       return false;
     }
-    if (c.length == 1) {
-      total += 1;
-      if (detector(c)) {
+    if (c.length >= 1) {
+      if (detector(c.trim())) {
         count += 1;
       }
+      total += 1;
     }
   }
-  return true;
+  return count == total;
 };
 module.exports = {
   isKinyarwanda,

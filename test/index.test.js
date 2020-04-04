@@ -30,12 +30,12 @@ describe("is-kinya", () => {
     });
     it("should behave as expected if a number is passed in", (done) => {
       let number = "500";
-      chai.expect(isKinyarwanda(number)).to.be.equal(true);
+      chai.expect(isKinyarwanda(number)).to.be.equal(false);
       done();
     });
     it("should behave as expected if a array of mixed text is passed in", (done) => {
       let words = ["500", "hello", "array", "holy", "murakoze"];
-      chai.expect(isKinyarwanda(words[0])).to.be.equal(true);
+      chai.expect(isKinyarwanda(words[0])).to.be.equal(false);
       chai.expect(isKinyarwanda(words[1])).to.be.equal(false);
       chai.expect(isKinyarwanda(words[2])).to.be.equal(false);
       chai.expect(isKinyarwanda(words[3])).to.be.equal(false);
