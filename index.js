@@ -15,20 +15,13 @@ const ikinyarwanda = [
   ...inyajwi,
   ...utwatuzo,
 ];
-let score = {
-  igihekane: 0,
-  icyungo: 0,
-  indomo: 0,
-  ingombajwi: 0,
-  inyajwi: 0,
-  utwatuzo: 0,
-};
+
 const tokenize = (word) => {
   // tokens holder
   let tokens = [];
-  //  if a word has ingombajwi in it
+  //  if a word has inyajwi in it
   tokens = word.split(/a|u|i|e|u|o/g);
-  for (let i of ingombajwi) {
+  for (let i of inyajwi) {
     if (word.includes(i)) {
       tokens.push(i);
     }
@@ -40,7 +33,7 @@ const detectIbihekane = (word) => {
   ibihekane.includes(word) ? true : false;
 };
 const detectInyajwi = (word) => {
-  ingombajwi.includes(word) ? true : false;
+  inyajwi.includes(word) ? true : false;
 };
 
 const isKinya = (c) => {
@@ -50,7 +43,7 @@ const isKinya = (c) => {
   return false;
 };
 
-const detectWord = (word) => {
+const isKinyarwanda = (word) => {
   if (typeof word == "object") {
     word = word.join(" ");
   }
@@ -59,7 +52,7 @@ const detectWord = (word) => {
   total = 0.0;
   for (let c of consonant) {
     if (c.trim().length > 1 && !ibihekane.includes(c.trim())) {
-      return 0.0;
+      return false;
     }
     if (c.length == 1) {
       total += 1;
@@ -68,6 +61,8 @@ const detectWord = (word) => {
       }
     }
   }
-  return count / total;
+  return true;
 };
-const res = detectWord(["holly"]);
+module.exports = {
+  isKinya: isKinyarwanda,
+};
