@@ -19,44 +19,41 @@ const ikinyarwanda = [
 const tokenize = (word) => {
   // tokens holder
   let tokens = [];
-  //  if a word has inyajwi in it
+  //  split word or sentence by vowels(inyajwi)
   tokens = word.split(/a|u|i|e|u|o/g);
   for (let i of inyajwi) {
     if (word.includes(i)) {
-      tokens.push(i);
+      tokens.push(i); // keep inyajwi
     }
   }
+  // return array of unique tokens
   return Array.from(new Set(tokens)).filter((e) => e.trim().length != 0);
 };
 
-const detectIbihekane = (word) => {
-  ibihekane.includes(word) ? true : false;
-};
-const detectInyajwi = (word) => {
-  inyajwi.includes(word) ? true : false;
-};
-
-const isKinya = (c) => {
-  if (ikinyarwanda.includes(c)) {
-    return true;
-  }
-  return false;
+const detector = (syllable) => {
+  ikinyarwanda.includes(syllable) ? true : false;
 };
 
 const isKinyarwanda = (word) => {
   if (typeof word == "object") {
     word = word.join(" ");
   }
-  const consonant = tokenize(word.toLowerCase());
+
+  const consonants = tokenize(String(word).toLowerCase());
   count = 0.0;
   total = 0.0;
-  for (let c of consonant) {
-    if (c.trim().length > 1 && !ibihekane.includes(c.trim())) {
+  for (let c of consonants) {
+    if (
+      c.trim().length > 1 &&
+      !ibyungo.includes(c.trim()) &&
+      !ibihekane.includes(c.trim()) &&
+      isNaN(parseInt(c))
+    ) {
       return false;
     }
     if (c.length == 1) {
       total += 1;
-      if (isKinya(c)) {
+      if (detector(c)) {
         count += 1;
       }
     }

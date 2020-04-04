@@ -17,9 +17,20 @@ describe("is-kinya", () => {
       chai.expect(isKinya(greeting)).to.be.equal(false);
       done();
     });
+
     it("should behave as expected if a foreign sentence is passed in", (done) => {
       let sentence = "should behave as expected";
       chai.expect(isKinya(sentence)).to.be.equal(false);
+      done();
+    });
+    it("should behave as expected if a sentence contains apostrophes", (done) => {
+      let sentence = "Ikinyarwanda kigizwe n'inyuguti";
+      chai.expect(isKinya(sentence)).to.be.equal(true);
+      done();
+    });
+    it("should behave as expected if a number is passed in", (done) => {
+      let number = "500";
+      chai.expect(isKinya(number)).to.be.equal(true);
       done();
     });
   });
