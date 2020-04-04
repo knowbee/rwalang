@@ -60,6 +60,8 @@ const isKinyarwanda = (word) => {
   }
   return true;
 };
+
+console.log(isKinyarwanda("holy"));
 module.exports = {
   isKinya: isKinyarwanda,
 };
