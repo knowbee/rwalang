@@ -15,7 +15,11 @@ const ikinyarwanda = [
   ...inyajwi,
   ...utwatuzo,
 ];
-
+/**
+ *
+ * @param {String} word
+ * @return {Array} tokens
+ */
 const tokenize = (word) => {
   // tokens holder
   let tokens = [];
@@ -29,11 +33,19 @@ const tokenize = (word) => {
   // return array of unique tokens
   return Array.from(new Set(tokens)).filter((e) => e.trim().length != 0);
 };
-
+/**
+ *
+ * @param {Array} syllable
+ * @return {Boolean} bool
+ */
 const detector = (syllable) => {
   ikinyarwanda.includes(syllable) ? true : false;
 };
-
+/**
+ *
+ * @param {String} word
+ * @return {Boolean} bool
+ */
 const isKinyarwanda = (word) => {
   if (typeof word == "object") {
     word = word.join(" ");
@@ -60,8 +72,6 @@ const isKinyarwanda = (word) => {
   }
   return true;
 };
-
-console.log(isKinyarwanda("holy"));
 module.exports = {
   isKinya: isKinyarwanda,
 };
