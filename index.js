@@ -1,28 +1,45 @@
-const { uturema, inteko } = require("./uturemajambo");
+const {
+  ibihekane,
+  ibyungo,
+  indomo,
+  ingombajwi,
+  inyajwi,
+  utwatuzo,
+} = require("./lib");
 
-const intekoEbyiri = word => {
-  Object.keys(inteko).forEach(int => {
-    if (word.includes(int)) {
-      word.replace(int, inteko[int]);
+let score = {
+  igihekane: 0,
+  icyungo: 0,
+  indomo: 0,
+  ingombajwi: 0,
+  inyajwi: 0,
+  utwatuzo: 0,
+};
+const detectIbihekane = async (word) => {
+  // tokens holder
+  let tokens = [];
+  // iterate over ibihekane
+  for (let i of ibihekane) {
+    //  if a word has igihekane in it
+    if (word.includes(i)) {
+      // split the word by igihekane and add to tokens array
+      tokens = [...word.split(i), i];
+      score.igihekane = 1;
+      return tokens;
+    } else {
+      return (tokens = [word]);
     }
-  });
+  }
 };
 
-const ubwinshi = word => {
-  Object.keys(uturema).forEach(prefix => {
-    if (word.startsWith(prefix)) {
-      let w = word.replace(prefix, uturema[prefix]);
-      Object.keys(inteko).forEach(int => {
-        if (w.includes(String(int))) {
-          console.log(w.replace(int, inteko[int]));
-        }
-      });
-      console.log(w);
-    }
-    return word;
-  });
-};
-ubwinshi("urumuri");
+const detectIbyungo = (word) => {};
+const detectIndomo = (word) => {};
+const detectIngombajwi = (word) => {};
+const detectInyajwi = (word) => {};
 
-// "kurembywa".split("mbyw")[0].slice(0, 2);
-// Birabujijwe kwandika ibihekane kw, hw, gw bikurikiwe n’inyajwi o cyangwa u.
+const detectWord = async (word) => {
+  const tokens = await detectIbihekane(word);
+  console.log(tokens);
+};
+
+console.log(detectWord("aa"));
