@@ -1,5 +1,10 @@
 # rwalang (detect ikinyarwanda)
 
+[![Build Status](https://travis-ci.com/knowbee/rwalang.svg?token=yN9jXnk59suszMqNsJJb&branch=master)](https://travis-ci.com/knowbee/rwalang)
+[![npm](https://img.shields.io/npm/dt/rwalang.svg)](https://www.npmjs.com/package/rwalang)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+
 A fast language detection package for Ikinyarwanda(Native language of Rwandans)
 
 ⚠ Be aware that if a sentence has foreign language mixed with Ikinyarwanda rwalang returns `false`
