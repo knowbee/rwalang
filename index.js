@@ -7,6 +7,14 @@ const {
   utwatuzo,
 } = require("./lib");
 
+const ikinyarwanda = [
+  ...ibihekane,
+  ...ibyungo,
+  ...indomo,
+  ...ingombajwi,
+  ...inyajwi,
+  ...utwatuzo,
+];
 let score = {
   igihekane: 0,
   icyungo: 0,
@@ -15,31 +23,51 @@ let score = {
   inyajwi: 0,
   utwatuzo: 0,
 };
-const detectIbihekane = async (word) => {
+const tokenize = (word) => {
   // tokens holder
   let tokens = [];
-  // iterate over ibihekane
-  for (let i of ibihekane) {
-    //  if a word has igihekane in it
+  //  if a word has ingombajwi in it
+  tokens = word.split(/a|u|i|e|u|o/g);
+  for (let i of ingombajwi) {
     if (word.includes(i)) {
-      // split the word by igihekane and add to tokens array
-      tokens = [...word.split(i), i];
-      score.igihekane = 1;
-      return tokens;
-    } else {
-      return (tokens = [word]);
+      tokens.push(i);
     }
   }
+  return Array.from(new Set(tokens)).filter((e) => e.trim().length != 0);
 };
 
-const detectIbyungo = (word) => {};
-const detectIndomo = (word) => {};
-const detectIngombajwi = (word) => {};
-const detectInyajwi = (word) => {};
-
-const detectWord = async (word) => {
-  const tokens = await detectIbihekane(word);
-  console.log(tokens);
+const detectIbihekane = (word) => {
+  ibihekane.includes(word) ? true : false;
+};
+const detectInyajwi = (word) => {
+  ingombajwi.includes(word) ? true : false;
 };
 
-console.log(detectWord("aa"));
+const isKinya = (c) => {
+  if (ikinyarwanda.includes(c)) {
+    return true;
+  }
+  return false;
+};
+
+const detectWord = (word) => {
+  if (typeof word == "object") {
+    word = word.join(" ");
+  }
+  const consonant = tokenize(word.toLowerCase());
+  count = 0.0;
+  total = 0.0;
+  for (let c of consonant) {
+    if (c.trim().length > 1 && !ibihekane.includes(c.trim())) {
+      return 0.0;
+    }
+    if (c.length == 1) {
+      total += 1;
+      if (isKinya(c)) {
+        count += 1;
+      }
+    }
+  }
+  return count / total;
+};
+const res = detectWord(["holly"]);
