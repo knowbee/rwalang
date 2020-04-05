@@ -29,7 +29,7 @@ const tokenize = (word) => {
   let tokens = [];
   //  split word or sentence by vowels(inyajwi)
   tokens = word.split(
-    /\s|a|u|i|e|u|o|[0-9]|[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g
+    /\s|a|u|i|e|u|o|â|ê|î|ô|û|[0-9]|[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g
   );
   for (let i of patterns) {
     if (word.includes(i)) {
@@ -77,6 +77,8 @@ const isKinyarwanda = (word) => {
   }
   return count == total;
 };
+
+console.log(isKinyarwanda("Gateêra"));
 
 module.exports = {
   isKinyarwanda,
