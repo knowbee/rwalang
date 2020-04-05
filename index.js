@@ -77,9 +77,6 @@ const isKinyarwanda = (word) => {
   }
   return count == total;
 };
-
-console.log(isKinyarwanda("Gateêra"));
-
 module.exports = {
   isKinyarwanda,
 };
