@@ -3,7 +3,8 @@ const {
   ibyungo,
   indomo,
   ingombajwi,
-  inyajwi_imibare,
+  inyajwi,
+  imibare,
   utwatuzo,
 } = require("./lib");
 
@@ -12,9 +13,12 @@ const ikinyarwanda = [
   ...ibyungo,
   ...indomo,
   ...ingombajwi,
-  ...inyajwi_imibare,
+  ...inyajwi,
+  ...imibare,
   ...utwatuzo,
 ];
+
+const patterns = [...inyajwi, ...imibare];
 /**
  *
  * @param {String} word
@@ -24,8 +28,10 @@ const tokenize = (word) => {
   // tokens holder
   let tokens = [];
   //  split word or sentence by vowels(inyajwi)
-  tokens = word.split(/a|u|i|e|u|o|[0-9]/g);
-  for (let i of inyajwi_imibare) {
+  tokens = word.split(
+    /\s|a|u|i|e|u|o|[0-9]|[-!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g
+  );
+  for (let i of patterns) {
     if (word.includes(i)) {
       tokens.push(i); // keep inyajwi
     }

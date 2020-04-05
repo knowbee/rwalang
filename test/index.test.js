@@ -43,4 +43,14 @@ describe("is-kinya", () => {
       done();
     });
   });
+  it("should behave as expected if a word is combined with a punctuation", (done) => {
+    let word = "Ubutinde:Ni uburyo ijambo ritinda";
+    chai.expect(isKinyarwanda(word)).to.be.equal(true);
+    done();
+  });
+  it("should behave as expected if a word is combined with a punctuation", (done) => {
+    let word = "1) ryama kare ";
+    chai.expect(isKinyarwanda(word)).to.be.equal(true);
+    done();
+  });
 });
