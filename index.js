@@ -3,7 +3,7 @@ const {
   ibyungo,
   indomo,
   ingombajwi,
-  inyajwi,
+  inyajwi_imibare,
   utwatuzo,
 } = require("./lib");
 
@@ -12,7 +12,7 @@ const ikinyarwanda = [
   ...ibyungo,
   ...indomo,
   ...ingombajwi,
-  ...inyajwi,
+  ...inyajwi_imibare,
   ...utwatuzo,
 ];
 /**
@@ -24,8 +24,8 @@ const tokenize = (word) => {
   // tokens holder
   let tokens = [];
   //  split word or sentence by vowels(inyajwi)
-  tokens = word.split(/a|u|i|e|u|o/g);
-  for (let i of inyajwi) {
+  tokens = word.split(/a|u|i|e|u|o|[0-9]/g);
+  for (let i of inyajwi_imibare) {
     if (word.includes(i)) {
       tokens.push(i); // keep inyajwi
     }
@@ -71,6 +71,7 @@ const isKinyarwanda = (word) => {
   }
   return count == total;
 };
+
 module.exports = {
   isKinyarwanda,
 };
